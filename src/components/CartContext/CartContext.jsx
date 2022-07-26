@@ -32,7 +32,7 @@ export const CartContextProvider = ({children}) =>{
     }   
 
     const itemQty = () => {
-        return cart.reduce((acum, prod) => acum = (acum + prod.cantidad),0)
+        return cart.reduce((acum, prod) => acum = acum + prod.cantidad,0)
     }
 
     const emptyCart = () =>{

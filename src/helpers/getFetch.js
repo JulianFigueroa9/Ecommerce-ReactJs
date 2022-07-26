@@ -177,3 +177,22 @@ export const getItem = (id) => {
         },2000)
     })
 }
+
+
+
+useEffect(() => {
+    const db = getFirestore();
+    const queryCollection = collection(db, "productos");
+    getDocs(
+        idCategory
+        ? query(
+            queryCollection,
+            orderBy("precio"),
+            where("categoria", "==", idCategory)
+            )
+        : query(queryCollection, orderBy("precio"))
+    )
+    .then( data => setProducts( data.docs.map( item => ( { id: item.id, ...item.data() } )  ) ) )
+    .catch(err => console.log(err))
+    .finally(() => setLoading(false))
+    }, [idCategory]);

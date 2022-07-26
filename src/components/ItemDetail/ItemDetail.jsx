@@ -6,7 +6,7 @@ import ItemCount from '../ItemCount/ItemCount.jsx';
 
 function ItemDetail ({item}){
 
-    const {cart, addToCart} = useCartContext()
+    const { addToCart} = useCartContext()
 
     const [boolean, setBoolean] = useState(true)
 
@@ -14,8 +14,7 @@ function ItemDetail ({item}){
         setBoolean(false)
         addToCart({...item, cantidad:cant})
 
-    }
-    console.log(cart)
+    }   
 
     return (
     <>
@@ -29,7 +28,7 @@ function ItemDetail ({item}){
                     <h4>Precio: ${item.precio}</h4>
                     {boolean 
                     ?
-                    <ItemCount initial="1" stock="10" onAdd={onAdd}/>
+                    <ItemCount initial={1} stock={5} onAdd={onAdd}/>
                     : <InputCount />
                     }
                 </div>
